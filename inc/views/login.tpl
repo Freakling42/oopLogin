@@ -1,6 +1,6 @@
 {$invalid}
 <br /><br />
-<form METHOD="GET">
+<form action="index.php" method="post">
     <table align="center" cellpadding="10" cellspacing="0" border="1">
         <tr>
             <td>Brugernavn</td>
@@ -14,7 +14,7 @@
 
         <tr>
             <td colspan="2" align="right">
-                <input type="submit" name="login" value="log in">
+                <input type="submit" name="log_in" value="log in">
             </td>
         </tr>
     </table>

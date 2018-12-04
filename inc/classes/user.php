@@ -4,13 +4,62 @@ include 'inc/database.php';
 class User {
     private $conn;
 
-    /* Get database access */
+    // Get database access
     public function __construct(\PDO $pdo) {
         $this->conn = $pdo;
     }
 
-    /* List all users */
+    // List all users
     public function get_users() {
-        return $this->conn->query("SELECT user_email, user_username FROM pg_users")->fetchAll();
+        return $this->conn->query("SELECT * FROM pg_users")->fetchAll();
     }
+    
+    // Check if the user is already logged in
+    public function is_logged_in() {
+        if (isset($_SESSION['user_session'])) {
+            return true;
+        }
+    } 
+    
+    // Log in registered users with either their username or email and their password
+    public function login($user_name, $user_email, $user_password)
+    {
+        try {
+            // Define query to insert values into the users table
+            $sql = "SELECT * FROM pg_users WHERE user_username =:user_name OR user_email=:user_email LIMIT 1";
+            $query = $this->conn->prepare($sql);
+
+            // Bind parameters
+            $query->bindParam(":user_name", $user_name);
+            $query->bindParam(":user_email", $user_email);
+
+            // Execute the query
+            $query->execute();
+
+            // Return row as an array indexed by both column name
+            $returned_row = $query->fetch(PDO::FETCH_ASSOC);
+            // Check if row is actually returned
+            if ($query->rowCount() > 0) {            
+                // Verify hashed password against entered password
+                if ($user_password == $returned_row['user_pass']) {                
+                    // Define session on successful login
+                    $_SESSION['user_session'] = $returned_row['user_id'];
+                    return true;
+                } else {                
+                    // Define failure
+                    return false;
+                }
+            }
+        } catch (PDOException $e) {
+            error_log($e->getMessage());
+        }
+    }
+    
+    // Log out user
+    public function log_out() {
+        session_destroy();
+        unset($_SESSION['user_session']);
+        return true;
+    }  
+  
 }
