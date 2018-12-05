@@ -1,4 +1,3 @@
-{$invalid}
 <br /><br />
 <form action="index.php" method="post">
     <table align="center" cellpadding="10" cellspacing="0" border="1">

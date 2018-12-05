@@ -56,7 +56,9 @@ if (isset($_POST['log_out'])) {
 }
 
 if($_SESSION['user_session']) {
-    $tpl->render('userEdit');
+    $currentUser = $user->getCurrentUserInfo();
+    $data = array('userName' => $currentUser['user_username'],);
+    $tpl->render('userEdit', $data);
 } else {
     $tpl->render('login');
 }

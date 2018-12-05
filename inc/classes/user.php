@@ -24,11 +24,36 @@ class User {
         }
     } 
     
+    public function getCurrentUserInfo()
+    {
+        $returned_row = '';
+    
+        if (isset($_SESSION['user_session'])) {
+            // Define current user id
+            $userID = $_SESSION['user_session'];
+            
+            // Define query
+            $sql = "SELECT user_username FROM pg_users WHERE user_id=:user_id";
+            $query = $this->conn->prepare($sql);
+
+            // Bind parameters
+            $query->bindParam(":user_id", $userID);
+
+            // Execute the query
+            $query->execute();
+
+            // Return row as an array indexed by both column name
+            $returned_row = $query->fetch(PDO::FETCH_ASSOC);
+            
+        } 
+        return $returned_row;        
+    }
+    
     // Log in registered users with either their username or email and their password
     public function login($user_name, $user_email, $user_password)
     {
         try {
-            // Define query to insert values into the users table
+            // Define query
             $sql = "SELECT * FROM pg_users WHERE user_username =:user_name OR user_email=:user_email LIMIT 1";
             $query = $this->conn->prepare($sql);
 
