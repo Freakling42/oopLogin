@@ -14,10 +14,11 @@
         <!-- HEADER -->
         <div id="header">
             <div id="headerElements">
-                <div id="logo">Tinna's playground</div>
-                <div id="loginWrapper">{if !empty($userName)}<div class="username">Velkommen: {$userName}</div>{/if}</div>
+                <div id="logo"><a href="index.php">Tinna's playground</a></div>
+                <div id="loginWrapper">{if !empty($userName)}<div class="username">Velkommen: {$userName}</div><form action="member.php" method="post"><input id="logOutBtn" type="submit" name="log_out" value="log ud"></form>{/if}</div>
             </div>
-            <div id="menuwrapper"><ul id="primary-menu"><li><a href="#">Medlemsskab</a></li></ul></div>
+            <div id="menuwrapper"><ul id="primary-menu"><li><a href="member.php">Medlemsskab</a></li></ul></div>
+            <span style="clear:both;"></span>
         </div><!-- END HEADER -->
 
         <!-- MAIN CONTENT -->

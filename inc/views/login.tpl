@@ -1,7 +1,7 @@
-{$invalid}
-<br /><br />
-<form action="index.php" method="post">
-    <table align="center" cellpadding="10" cellspacing="0" border="1">
+{if !empty($alertTekst)}<p id="alertTekst">{$alertTekst}</p>{/if}
+<h1>Login</h1>
+<form action="member.php" method="post">
+    <table id="loginForm" cellpadding="10" cellspacing="0">
         <tr>
             <td>Brugernavn</td>
             <td><input type="text" name="username" value="" /></td>

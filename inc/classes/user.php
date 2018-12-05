@@ -33,7 +33,7 @@ class User {
             $userID = $_SESSION['user_session'];
             
             // Define query
-            $sql = "SELECT user_username FROM pg_users WHERE user_id=:user_id";
+            $sql = "SELECT * FROM pg_users WHERE user_id=:user_id";
             $query = $this->conn->prepare($sql);
 
             // Bind parameters
@@ -91,8 +91,8 @@ class User {
         return true;
     }  
 
-    // Edit user
-    public function edit($user_password)
+    // Edit user password
+    public function editPass($user_password)
     {
         try {
             // Hash password
@@ -123,6 +123,41 @@ class User {
         } catch (PDOException $e) {
             error_log($e->getMessage());
         }
-    } 
+    }
+    
+    // Edit user information
+    public function editUser($user_firstname, $user_lastname, $user_adress, $user_postalcode, $user_city)
+    {
+        try {            
+            //user id
+            $user_id = $_SESSION['user_session'];
+
+            // Define query to update user values
+            $sql = "UPDATE pg_users SET user_firstname=:user_firstname, user_lastname=:user_lastname, user_adress=:user_adress, user_postalcode=:user_postalcode, user_city=:user_city WHERE user_id=:user_id";
+            $query = $this->conn->prepare($sql);
+
+            // Bind parameters
+            $query->bindParam(":user_firstname", $user_firstname);
+            $query->bindParam(":user_lastname", $user_lastname);
+            $query->bindParam(":user_adress", $user_adress);
+            $query->bindParam(":user_postalcode", $user_postalcode);
+            $query->bindParam(":user_city", $user_city);
+            $query->bindParam(":user_id", $user_id);
+
+            // Execute the query
+            $query->execute();
+           
+            // Check if row is actually returned
+            if ($query->rowCount() > 0) {                   
+                // Define success
+                return true;
+            } else {
+                // Define failure
+                return false;                
+            }                                   
+        } catch (PDOException $e) {
+            error_log($e->getMessage());
+        }
+    }     
   
 }

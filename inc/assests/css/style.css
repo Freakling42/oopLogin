@@ -19,16 +19,18 @@
         line-height: 23px;
         font-size: 14px;
     }
-
-    #contentWrapper {
-        max-width: 1100px;
-        margin: 0 auto;
-    }
     
     a {
         color: #337ab7;
         text-decoration: none;
-    }  
+    } 
+    
+    h1 {
+        font-weight: 300;
+        color: #415459;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }    
     
  /* ---------------------------------------------------------------------------------------
   2. Typography
@@ -36,6 +38,10 @@
 
     body {
         font-family: 'Open Sans', sans-serif;
+    }
+    
+    h1, #logo a {
+        font-family: 'Merriweather', serif;
     }
 
 /* ---------------------------------------------------------------------------------------
@@ -66,7 +72,11 @@
         font-size: 24px;
         font-weight: 400;
         display: block;
-    }    
+    } 
+    
+    #primary-menu li a:hover {
+        text-decoration: underline;
+    }
 
 /* ---------------------------------------------------------------------------------------
   4. Header Layout
@@ -84,7 +94,12 @@
     #logo {
         float: left;
         width: 50%;
+        padding-top: 32px;
+    }
+    
+    #logo a{
         font-size: 24px;
+        font-weight: 300;
         color: #415459;
     }    
     
@@ -98,6 +113,35 @@
 /* ---------------------------------------------------------------------------------------
   5. Content Layout
 --------------------------------------------------------------------------------------- */
+    #contentWrapper {
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+    
+    #alertTekst {
+        font-weight: bold;
+        color: white;
+        display: block;
+        width: 100%;
+        background-color: #935463;
+        padding: 10px;
+    }
+
+    #eUserFormWrap {
+        float: left;
+        width: 49%;
+        border-right: 1px solid #9ba9ae;
+    }
+    
+    #passFormWrap {
+        float: left;
+        width: 49%; 
+        padding-left: 20px;
+    }
+    
+    #logOutBtn {
+    }
+
 /* ---------------------------------------------------------------------------------------
   6. Footer Layout
 --------------------------------------------------------------------------------------- */
