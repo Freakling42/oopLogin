@@ -16,14 +16,14 @@ if (isset($_POST['log_in'])) {
 
     // Check for empty and invalid inputs
     if (empty($user_name) || empty($user_email)) {
-        echo "Please enter a valid username or e-mail address";
+        echo "Indtast venligst gyldigt brugernavn eller e-mail addresse";
     } elseif (empty($user_password)) {
-        echo "Please enter a valid username or e-mail address";
+        echo "Indtast venligst gyldigt brugernavn eller e-mail addresse";
     } else {
         // Check if the user may be logged in
         if ($user->login($user_name, $user_email, $user_password)) {
         } else {
-            echo "Please enter a valid username or e-mail address";
+            echo "Indtast venligst gyldigt brugernavn eller e-mail addresse";
         }
     }
 }
@@ -31,15 +31,22 @@ if (isset($_POST['log_in'])) {
 // Check if edit form is submitted
 if (isset($_POST['edit_user'])) {
     $user_password = trim($_POST['password']);
+    $user_password2 = trim($_POST['password2']);
     if(empty($user_password)){
-        echo "Please enter a valid password";
+        echo "Indtast venligst gyldigt kodeord";
+    } elseif(empty($user_password2)) {
+        echo "Indtast venligst gyldigt kodeord";
     } else {
-        // Check if the user may be logged in
-        if ($user->edit($user_password)) {
-            echo "yay you have changed password";
+        if($user_password == $user_password2) {
+            // change password
+            if ($user->edit($user_password)) {
+                echo "Kodeord er ændret";
+            } else {
+                echo "Indtast venligst gyldigt kodeord";
+            }          
         } else {
-            echo "Please enter a valid password";
-        }    
+            echo "Kodeord er ikke ens";
+        }   
     }
 } 
 
