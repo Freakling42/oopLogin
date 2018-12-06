@@ -1,4 +1,3 @@
-{if !empty($alertTekst)}<p id="alertTekst">{$alertTekst}</p>{/if}
 <div id="eUserFormWrap">
     <h1>Rediger oplysninger</h1>
     <form action="member.php" method="post">

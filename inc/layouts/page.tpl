@@ -23,6 +23,7 @@
 
         <!-- MAIN CONTENT -->
         <div id="mainContent">
+            {if !empty($alertTekst)}<p id="alertTekst">{$alertTekst}</p>{/if}
             {$__content}
         </div><!-- END MAIN CONTENT -->
 
