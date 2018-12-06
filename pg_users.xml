@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+- phpMyAdmin XML Dump
+- version 4.8.3
+- https://www.phpmyadmin.net
+-
+- Host: mysql94.unoeuro.com
+- Generation Time: Dec 06, 2018 at 07:34 PM
+- Server version: 5.7.24-26-log
+- PHP Version: 7.2.12
+-->
+
+<pma_xml_export version="1.0" xmlns:pma="https://www.phpmyadmin.net/some_doc_url/">
+    <!--
+    - Structure schemas
+    -->
+    <pma:structure_schemas>
+        <pma:database name="madebydomino_dk_db_playground" collation="latin1_swedish_ci" charset="latin1">
+            <pma:table name="pg_users">
+                CREATE TABLE `pg_users` (
+                  `user_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+                  `user_username` varchar(100) DEFAULT NULL,
+                  `user_email` varchar(100) DEFAULT NULL,
+                  `user_pass` varchar(255) DEFAULT NULL,
+                  `user_firstname` varchar(255) DEFAULT NULL,
+                  `user_lastname` varchar(255) DEFAULT NULL,
+                  `user_adress` varchar(100) DEFAULT NULL,
+                  `user_postalcode` int(11) DEFAULT NULL,
+                  `user_city` varchar(100) DEFAULT NULL,
+                  PRIMARY KEY (`user_id`),
+                  KEY `user_username` (`user_username`),
+                  KEY `user_email` (`user_email`) USING BTREE
+                ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+            </pma:table>
+        </pma:database>
+    </pma:structure_schemas>
+
+    <!--
+    - Database: 'madebydomino_dk_db_playground'
+    -->
+    <database name="madebydomino_dk_db_playground">
+        <!-- Table pg_users -->
+        <table name="pg_users">
+            <column name="user_id">1</column>
+            <column name="user_username">tido</column>
+            <column name="user_email">tinnadomino@hotmail.com</column>
+            <column name="user_pass">$2y$10$rOw4w9uw5Qr1EjWD21imseyOYhHY9FTV0CkC5dQcUJ8UyleInMU5a</column>
+            <column name="user_firstname">Tinna Louise</column>
+            <column name="user_lastname">Domino</column>
+            <column name="user_adress">Valmuevej 56</column>
+            <column name="user_postalcode">5500</column>
+            <column name="user_city">Middelfart</column>
+        </table>
+        <table name="pg_users">
+            <column name="user_id">6</column>
+            <column name="user_username">testuser</column>
+            <column name="user_email">tinnadomino@gmail.com</column>
+            <column name="user_pass">$2y$10$cNUbA6./vhsWYQQqwl.SK.Ta/LBHpliNiOGCKz/lqAZYDGcGJUVnq</column>
+            <column name="user_firstname"></column>
+            <column name="user_lastname"></column>
+            <column name="user_adress"></column>
+            <column name="user_postalcode">0</column>
+            <column name="user_city"></column>
+        </table>
+    </database>
+</pma_xml_export>
